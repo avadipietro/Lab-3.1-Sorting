@@ -4,7 +4,7 @@ public class ArrayMethods1 {
 	public static void main(String args[]) {
 		int[] list1 = {2, 1, 4, 3};
 		double[] list2 = {2.0, 1.0, 4.0, 3.0};
-		String[] list3 = {"hi", "jo", "shha", "ava"};
+		String[] list3 = {"b", "e", "a", "c", "z", "d"};
 		insertionSort(list1);
 		selectionSort(list2);
 		bubbleSort(list3);
@@ -25,18 +25,25 @@ public class ArrayMethods1 {
 	 *   element, and repeats.*/
 	
 	public static void selectionSort(double [] list1) {
-		int y = 0;
-		for (int x = 1; x < list1.length - 1; x++) {
-			if (list1[x] < list1[y]) {
-				swapDouble(list1, x, y);
-				int z = x;
-				x = y;
-				y = z;
-			}
-		}
+		//INDEXOF() !!!
+		
+		boolean swapped = false;
+		double lowest = list1[0];
+		while (swapped == false) {
+			for (int x = 0; x < list1.length - 1; x++) {
+				if (list1[x] > (list1[x + 1])) {
+					swapDouble(list1, x, x + 1);
+					swapped = false;
+				}
+				else {
+					swapped = true;
+				}
+			}	
+		}		
 		for (double l : list1) {
 			System.out.println(l);
 		}
+		
 	}
 	
 	/* Bubble sort iterates through the list, swapping
@@ -46,28 +53,22 @@ public class ArrayMethods1 {
 	public static void bubbleSort(String [] list1) {
 		boolean swapped = false;
 		while (swapped == false) {
-			for (int x = 0; x <= list1.length - 1; x += 2) {
-				if (list1[x].compareTo(list1[x + 1]) < 0) {
+			for (int x = 0; x < list1.length - 1; x++) {
+				if (list1[x].compareTo(list1[x + 1]) > 0) {
 					swapString(list1, x, x + 1);
-				}
-			}
-			for (int y = 0; y <= list1.length - 2; y++) {
-				int count = 0;
-				if (list1[y].compareTo(list1[y + 1]) < 0) {
-					count++;
-				}
-				if (count == list1.length) {
 					swapped = false;
 				}
-			}
-		}
+				else {
+					swapped = true;
+				}
+			}	
+		}		
 		for (String l : list1) {
 			System.out.println(l);
 		}
 	}
 	public static void swapInt(int[] list1, int x, int y) {
 		int z = list1[x];
-		// x = 2, y = 3, z = 2
 		list1[x] = list1[y];
 		list1[y] = z;
 	}
