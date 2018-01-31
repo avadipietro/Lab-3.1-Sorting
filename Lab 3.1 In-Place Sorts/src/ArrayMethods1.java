@@ -12,18 +12,7 @@ public class ArrayMethods1 {
 	 *    we are inserting elements as we sort. */
 	
 	public static void insertionSort(int[] list1) {
-		int y = 0;
-		for (int x = 1; x < list1.length - 1; x++) {
-			if (list1[x] < list1[y]) {
-				swapInt(list1, x, y);
-				int z = x;
-				x = y;
-				y = z;
-			}
-		}
-		for (int l : list1) {
-			System.out.println(l);
-		}
+		
 	}
 	
 	/*Selection sort finds the lowest element and
@@ -32,7 +21,18 @@ public class ArrayMethods1 {
 	 *   element, and repeats.*/
 	
 	public static void selectionSort(double [] list1) {
-		
+		int y = 0;
+		for (int x = 1; x < list1.length - 1; x++) {
+			if (list1[x] < list1[y]) {
+				swapDouble(list1, x, y);
+				int z = x;
+				x = y;
+				y = z;
+			}
+		}
+		for (double l : list1) {
+			System.out.println(l);
+		}
 	}
 	
 	/* Bubble sort iterates through the list, swapping
