@@ -2,8 +2,8 @@
 public class ArrayMethods1 {
 	
 	public static void main(String args[]) {
-		int[] list1 = {1, 2, 3, 4};
-		swapInt(list1, 2, 3);
+		int[] list1 = {2, 1, 4, 3};
+		insertionSort(list1);
 	}
 	
 	/*Insertion takes each element from the array,
@@ -12,7 +12,18 @@ public class ArrayMethods1 {
 	 *    we are inserting elements as we sort. */
 	
 	public static void insertionSort(int[] list1) {
-		
+		int y = 0;
+		for (int x = 1; x < list1.length - 1; x++) {
+			if (list1[x] < list1[y]) {
+				swapInt(list1, x, y);
+				int z = x;
+				x = y;
+				y = z;
+			}
+		}
+		for (int l : list1) {
+			System.out.println(l);
+		}
 	}
 	
 	/*Selection sort finds the lowest element and
@@ -36,10 +47,6 @@ public class ArrayMethods1 {
 		// x = 2, y = 3, z = 2
 		list1[x] = list1[y];
 		list1[y] = z;
-		
-		for (int i = 0; i < list1.length; i++) {
-			System.out.println(list1[i]);
-		}
 	}
 	public static void swapDouble(double[] list1, int x, int y) {
 		int z = x;
