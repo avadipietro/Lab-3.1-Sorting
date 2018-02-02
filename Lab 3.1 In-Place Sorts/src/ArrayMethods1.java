@@ -1,12 +1,15 @@
 
+// Ava DiPietro
+// 2/1/18
+
 public class ArrayMethods1 {
 	
 	public static void main(String args[]) {
-		int[] list1 = {2, 1, 4, 3};
-		double[] list2 = {10.0, 11.0, 6.0, 2.0, 10.0, 12.0, 1.0, 2.0, 6.0, 7.0};
-		String[] list3 = {"jelly", "egg", "cow", "hay", "mayo", "bread", "fish", "rice", "farm"};
-		insertionSort(list1);
-		selectionSort(list2);
+		int[] list1 = {1, 4, 4, 5, 2, 4, 3, 17, 0};
+		double[] list2 = {1.1, 4.1, 4.2, 5.0, 2.0, 4.0, 3.0, 17.0, 0.0};
+		String[] list3 = {"zebra", "tortilla", "abba", "foo", "bar", "aba"};
+		//insertionSort(list1); COMPLETE?
+		//selectionSort(list2);
 		//bubbleSort(list3); COMPLETE
 	}
 	
@@ -15,8 +18,18 @@ public class ArrayMethods1 {
 	 *   correct order. We need to keep track of where
 	 *    we are inserting elements as we sort. */
 	
+	// It does it backwards and somehow works? Aight
 	public static void insertionSort(int[] list) {
-		
+		for (int y = 0; y < list.length; y++) {
+			for (int x = 0; x <= y; x++) {
+				if (list[y] < list[x]) {
+					swapInt(list, x, y);
+				}
+			}
+		}
+		for (int l : list) {
+			System.out.println(l);
+		}
 	}
 	
 	/*Selection sort finds the lowest element and
@@ -25,23 +38,45 @@ public class ArrayMethods1 {
 	 *   element, and repeats.*/
 	
 	public static void selectionSort(double [] list) {
-		/*int y = 0;
-		double lowest = 0.0;
-		while (y != list.length) {
-			for (int x = 1; x < list.length; x++) {
-				lowest = list[y];
-				if (list[x] < lowest) {
-					swapDouble(list, x, y);
+		int w = 0;
+		for (int x = 1; x < list.length; x++) {
+			double lowest = list[w];
+			if (list[x] < lowest) {
+				swapDouble(list, x, w);
+				int p = x;
+				w = p;
+				lowest = list[p];
+			}
+		}
+		
+		for (double l : list) {
+			System.out.println(l);
+		}
+		
+		/*
+		int y = 0;
+		int c = 1;
+		while (c != 0) {
+			c = 0;
+			while (y != list.length) {
+				y = 0;
+				for (int x = 1; x < list.length - 1; x++) {
+					System.out.println("x = " + x);
+					System.out.println("y = " + y);
+					System.out.println("c = " + c);
+					if (list[x] < list[y]) {
+						swapDouble(list, x, y);
+						c++;
+					}
+					else {
+						y++;
+					}
 				}
 			}
 		}
 		for (double l : list) {
 			System.out.println(l);
-		}
-		*/
-		int y = 0;
-		int x = 1;
-		double lowest = 0.0;
+		}*/
 	}
 	
 	/* Bubble sort iterates through the list, swapping
