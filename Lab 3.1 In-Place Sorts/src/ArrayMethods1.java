@@ -1,6 +1,6 @@
-
 // Ava DiPietro
-// 2/1/18
+// 2/2/18
+
 
 public class ArrayMethods1 {
 	
@@ -8,17 +8,32 @@ public class ArrayMethods1 {
 		int[] list1 = {1, 4, 4, 5, 2, 4, 3, 17, 0};
 		double[] list2 = {1.1, 4.1, 4.2, 5.0, 2.0, 4.0, 3.0, 17.0, 0.0};
 		String[] list3 = {"zebra", "tortilla", "abba", "foo", "bar", "aba"};
-		//insertionSort(list1); COMPLETE?
-		//selectionSort(list2);
-		//bubbleSort(list3); COMPLETE
+		
+		//insertion sort test
+		System.out.println("insertion sort {");
+		long start = System.nanoTime();
+		insertionSort(list1);
+		long end = System.nanoTime();
+		long time = end - start;
+		System.out.println("} took " + time + " nanoseconds\n");
+		
+		//Selection Sort Test
+		System.out.println("selection sort {");
+		start = System.nanoTime();
+		selectionSort(list2);
+		end = System.nanoTime();
+		time = end - start;
+		System.out.println("} took " + time + " nanoseconds\n");
+			
+		//Bubble Sort Test
+		System.out.println("bubble sort {");
+		start = System.nanoTime();
+		bubbleSort(list3);
+		end = System.nanoTime();
+		time = end - start;
+		System.out.println("} took " + time + " nanoseconds\n");
 	}
 	
-	/*Insertion takes each element from the array,
-	 *  and adds it to the front of the array in the
-	 *   correct order. We need to keep track of where
-	 *    we are inserting elements as we sort. */
-	
-	// It does it backwards and somehow works? Aight
 	public static void insertionSort(int[] list) {
 		for (int y = 0; y < list.length; y++) {
 			for (int x = 0; x <= y; x++) {
@@ -32,56 +47,18 @@ public class ArrayMethods1 {
 		}
 	}
 	
-	/*Selection sort finds the lowest element and
-	 *  moves it to the front of the array. Then 
-	 *  searches the rest of the array for the next
-	 *   element, and repeats.*/
-	
-	public static void selectionSort(double [] list) {
-		int w = 0;
-		for (int x = 1; x < list.length; x++) {
-			double lowest = list[w];
-			if (list[x] < lowest) {
-				swapDouble(list, x, w);
-				int p = x;
-				w = p;
-				lowest = list[p];
-			}
-		}
-		
-		for (double l : list) {
-			System.out.println(l);
-		}
-		
-		/*
-		int y = 0;
-		int c = 1;
-		while (c != 0) {
-			c = 0;
-			while (y != list.length) {
-				y = 0;
-				for (int x = 1; x < list.length - 1; x++) {
-					System.out.println("x = " + x);
-					System.out.println("y = " + y);
-					System.out.println("c = " + c);
-					if (list[x] < list[y]) {
-						swapDouble(list, x, y);
-						c++;
-					}
-					else {
-						y++;
-					}
+	public static void selectionSort(double [] list) {	
+		for (int x = 0; x < list.length; x++) {
+			for (int y = x; y < list.length; y++) {
+				if (list[y] < list[x]) {
+					swapDouble(list, x, y);
 				}
 			}
-		}
+		}		
 		for (double l : list) {
 			System.out.println(l);
-		}*/
+		}		
 	}
-	
-	/* Bubble sort iterates through the list, swapping
-	 *  any out of order elements. We keep iterating until
-	 *  no swaps are required. Then the array is sorted! */
 	
 	public static void bubbleSort(String [] list) {
 		int count = 1;
